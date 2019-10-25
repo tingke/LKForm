@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "LKFormTableViewCell.h"
-#import "LKFormItem.h"
+#import "LKCustomFormItem.h"
+#import "LKInputFormItem.h"
+#import "LKTextFormItem.h"
+#import "LKFormSection.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface LKFormViewController : UIViewController
+@interface LKFormController : UIViewController
 
 @property(nonatomic, strong) UITableView *tableView;
 
-@property(nonatomic, strong) NSArray *dataSource;
+@property(nonatomic, strong) NSArray <LKFormSection *>*dataSource;
 
 @end
 
