@@ -1,0 +1,6 @@
+framework module Pods_LKForm_Tests {
+  umbrella header "Pods-LKForm_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

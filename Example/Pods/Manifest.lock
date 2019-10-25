@@ -1,0 +1,16 @@
+PODS:
+  - LKForm (0.1.0)
+
+DEPENDENCIES:
+  - LKForm (from `../`)
+
+EXTERNAL SOURCES:
+  LKForm:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LKForm: c8670efe31558c8add0b1f7bb2956d49f1510b86
+
+PODFILE CHECKSUM: 523ec7d281284f98fc4ff52b4f4097515e7c9479
+
+COCOAPODS: 1.7.5
