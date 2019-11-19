@@ -10,7 +10,6 @@
 		19A9064CF5960AD580D08D1A29F62DD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		2667C5031822A2923979473DC2160E75 /* LKForm-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 82286DCD90120D87E469D7956A5CB0A9 /* LKForm-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		43D6499F6E5DE20D881D0C62111BE41B /* Pods-LKForm_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E5E98C039B81D062A53B3A5275A2A3A4 /* Pods-LKForm_Tests-dummy.m */; };
-		440B4387C3BB60716FE9D7D04F77615D /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 92E6F8997B144647C712587281D56D15 /* ReplaceMe.m */; };
 		52E40F37E5052371964B31B23A6E1EC2 /* LKForm-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2550C6117118242A20152686717399DB /* LKForm-dummy.m */; };
 		63DA5DA99A4DF9834695DD26F93EFC0F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		6A47120472378617C8C7F616C364DA42 /* Pods-LKForm_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D5C338B6E20B469C7321336C73896906 /* Pods-LKForm_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -40,7 +39,7 @@
 		0348C4FF0E2DA8F41321D3CC3C03F9AD /* Pods-LKForm_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LKForm_Tests-umbrella.h"; sourceTree = "<group>"; };
 		2550C6117118242A20152686717399DB /* LKForm-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LKForm-dummy.m"; sourceTree = "<group>"; };
 		2C57CE9AE88F0BEA9DAD60AA3CCBA877 /* Pods-LKForm_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LKForm_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		2FE604A75696909D9F66D734161FF071 /* LKForm.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = LKForm.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2FE604A75696909D9F66D734161FF071 /* LKForm.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = LKForm.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		30C96939A1F4D840F920EFE62F25CBBA /* Pods-LKForm_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LKForm_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		32D46339E4C4EDED8CF67C4A7612B4B4 /* Pods-LKForm_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-LKForm_Example-frameworks.sh"; sourceTree = "<group>"; };
@@ -56,17 +55,16 @@
 		7D50A516789D21DDEC2AD03BBB591DC5 /* LKForm.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = LKForm.modulemap; sourceTree = "<group>"; };
 		82286DCD90120D87E469D7956A5CB0A9 /* LKForm-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LKForm-umbrella.h"; sourceTree = "<group>"; };
 		929EBBA6569A95148D054E9B029DC2E1 /* Pods-LKForm_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LKForm_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		92E6F8997B144647C712587281D56D15 /* ReplaceMe.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = LKForm/Classes/ReplaceMe.m; sourceTree = "<group>"; };
-		97E097126FCDDE00C9F43373CCA62FD2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		97E097126FCDDE00C9F43373CCA62FD2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		9BD0D58069F1A51E73A442AA0FD9586D /* Pods-LKForm_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LKForm_Tests-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E94584CFC3A8265EA184670C247B3DA /* Pods-LKForm_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LKForm_Example-dummy.m"; sourceTree = "<group>"; };
-		AFBA4E344F05D144A3955BFFE3398904 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		D3313F3CA26B1BC244B28E9E4A51875B /* Pods_LKForm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LKForm_Tests.framework; path = "Pods-LKForm_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFBA4E344F05D144A3955BFFE3398904 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D3313F3CA26B1BC244B28E9E4A51875B /* Pods_LKForm_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LKForm_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C338B6E20B469C7321336C73896906 /* Pods-LKForm_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-LKForm_Example-umbrella.h"; sourceTree = "<group>"; };
 		E5E98C039B81D062A53B3A5275A2A3A4 /* Pods-LKForm_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LKForm_Tests-dummy.m"; sourceTree = "<group>"; };
-		ED7EC039F527581BD289E2E3CFD201FA /* Pods_LKForm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_LKForm_Example.framework; path = "Pods-LKForm_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF3F71F2E167C2375470586DD1540C19 /* LKForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = LKForm.framework; path = LKForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED7EC039F527581BD289E2E3CFD201FA /* Pods_LKForm_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LKForm_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF3F71F2E167C2375470586DD1540C19 /* LKForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LKForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F10680A6711C7BCE3C38C6BCA2AD2D56 /* Pods-LKForm_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LKForm_Example.release.xcconfig"; sourceTree = "<group>"; };
 		F8849CA4B0FA2A0A2A7E6EE9F8E3E161 /* Pods-LKForm_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LKForm_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +129,6 @@
 		8746A2E8ABCFD11387C1AD9E47650960 /* LKForm */ = {
 			isa = PBXGroup;
 			children = (
-				92E6F8997B144647C712587281D56D15 /* ReplaceMe.m */,
 				73748A606D2BBA1CB12E723629FF3AB0 /* Pod */,
 				B475E33AEA72D958723D7734A0F0FAC6 /* Support Files */,
 			);
@@ -381,7 +378,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				52E40F37E5052371964B31B23A6E1EC2 /* LKForm-dummy.m in Sources */,
-				440B4387C3BB60716FE9D7D04F77615D /* ReplaceMe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,8 +485,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

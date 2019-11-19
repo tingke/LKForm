@@ -7,18 +7,21 @@
 //
 
 #import "LKInputFormItem.h"
+#import "LKInputFormViewCell.h"
 
 @implementation LKInputFormItem
 
 - (NSString *)cellIdentifier {
-    return NSStringFromClass([UITableViewCell class]);
+    return NSStringFromClass([LKInputFormViewCell class]);
 }
 
 + (instancetype)itemWithText:(NSString *)text
-                 placeholder:(NSString *)placeholder {
+                 placeholder:(NSString *)placeholder
+                   textBlock:(LKTextChangeBlock)textBlock {
     LKInputFormItem *item = [[self alloc] init];
     item.text = text;
     item.placeholder = placeholder;
+    item.textBlock = textBlock;
     return item;
 }
 

@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, strong) NSArray <LKFormSection *>*dataSource;
 
+- (UITableViewStyle)tableStyle;
+
 @end
 
 NS_ASSUME_NONNULL_END

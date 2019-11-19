@@ -10,6 +10,10 @@
 
 @implementation LKTextFormItem
 
+- (NSString *)cellIdentifier {
+    return nil;
+}
+
 + (instancetype)itemWithTitle:(NSString *)title subtitle:(NSString *)subtitle {
     LKTextFormItem *item = [[self alloc] init];
     item.subtitle = subtitle;

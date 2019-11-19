@@ -17,7 +17,7 @@ typedef void(^LKSelectRowBlock)(__kindof LKFormItem *item);
 
 @property(nonatomic, copy) LKSelectRowBlock selectRowBlock;
 
-@property(nonatomic, weak) UIGestureRecognizer *gesture;
+@property(nonatomic, strong) UIGestureRecognizer *gesture;
 
 @property(nonatomic, strong) Class vcClass;
 

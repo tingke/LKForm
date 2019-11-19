@@ -8,6 +8,8 @@
 
 #import "LKFormController.h"
 #import "UITableViewCell+LK.h"
+#import "LKInputFormViewCell.h"
+#import "LKFormHeader.h"
 
 @interface LKFormController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -28,6 +30,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:self.tableStyle];
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
+    self.tableView.tableFooterView = [UIView new];
+    if (@available(iOS 11.0, *)) {
+        self.tableView.estimatedRowHeight = 0;
+        self.tableView.estimatedSectionHeaderHeight = 0;
+        self.tableView.estimatedSectionFooterHeight = 0;
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    }
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.backgroundColor = self.view.backgroundColor;
     self.tableView.estimatedRowHeight = 100;
@@ -50,6 +64,10 @@
     }
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - ————— UITableViewDataSource —————
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -64,7 +82,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LKFormItem *item = [self itemAtIndexPath:indexPath];
     NSString *identifier = item.cellIdentifier;
-    if (![self.registerIdentifier containsObject:identifier]) {
+    if (identifier && ![self.registerIdentifier containsObject:identifier]) {
         [self.registerIdentifier addObject:identifier];
         [self.tableView registerCell:NSClassFromString(identifier) withIdentifier:identifier];
     }
@@ -81,48 +99,48 @@
             cell.textLabel.attributedText = aItem.attributedTitle;
         }else{
             cell.textLabel.text = aItem.title;
-            cell.textLabel.font = [UIFont systemFontOfSize:17];
         }
         if (aItem.attributedSubtitle) {
             cell.detailTextLabel.attributedText = aItem.attributedSubtitle;
         }else{
             cell.detailTextLabel.text = aItem.subtitle;
-            cell.detailTextLabel.font = [UIFont systemFontOfSize:17];
         }
 //        if ([aItem.icon hasPrefix:@"http"]) {
 //            NSURL *url = [NSURL URLWithString:aItem.icon.URLDecode];
 //            [cell.imageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"test"]];
 //        }else if(aItem.icon.length){
-//            cell.imageView.image = [UIImage imageNamed:aItem.icon];
-//        }
-        
-//        if ([item isMemberOfClass:[DSStaticTableAccessoryItem class]]) {
-//            DSStaticTableAccessoryItem *accessoryItem = (DSStaticTableAccessoryItem *)item;
-//            if (accessoryItem.accessoryView) {
-//                if(aItem.showArrow) {
-//                    [cell addSubview:accessoryItem.accessoryView];
-//                    [accessoryItem.accessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                        make.centerY.equalTo(cell);
-//                        make.right.equalTo(cell.contentView).offset(0);
-//                        make.width.equalTo(@(accessoryItem.accessoryView.width));
-//                        make.height.equalTo(@(accessoryItem.accessoryView.height));
-//                    }];
-//                }else {
-//                    cell.accessoryView = accessoryItem.accessoryView;
-//                }
-//            }else{
-//                cell.accessoryType = accessoryItem.accessoryType;
-//            }
+            cell.imageView.image = [UIImage imageNamed:aItem.icon];
 //        }
     }else if([item isKindOfClass:[LKInputFormItem class]]) {
-
         LKInputFormItem *aItem = (LKInputFormItem *)item;
-
+        LKInputFormViewCell *aCell = (LKInputFormViewCell *)cell;
+        aCell.textLabel.text = aItem.title;
+        if (aItem.inputType == LKInputTypeInput) {
+            aCell.textField.secureTextEntry = aItem.secureTextEntry;
+            aCell.textField.placeholder = aItem.placeholder;
+            aCell.textField.text = aItem.text;
+            if (aItem.textFont) {
+                aCell.textField.font = aItem.textFont;
+            }
+            aCell.textView.hidden = YES;
+            aCell.textField.hidden = NO;
+        }else {
+            aCell.textView.placeholder = aItem.placeholder;
+            aCell.textView.text = aItem.text;
+            if (aItem.textFont) {
+                aCell.textView.font = aItem.textFont;
+            }
+            aCell.textView.hidden = NO;
+            aCell.textField.hidden = YES;
+        }
+        [self textChangeWithItem:aItem withTextView:aCell.textView orTextField:aCell.textField];
     }else if([item isKindOfClass:[LKCustomFormItem class]]){
         LKCustomFormItem *aItem = (LKCustomFormItem *)item;
-        
+        NSAssert([cell conformsToProtocol:@protocol(LKFormProtocol)], @"自定义cell请实现LKFormProtocol协议");
+        if(aItem.bindingValue) {
+            [cell setValue:aItem.bindingValue forKey:@"model"];
+        }
     }
-    
     return cell;
 }
 
@@ -157,8 +175,9 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     LKFormSection *group = self.dataSource[section];
     if (!group.headerView) {
-        UIView *view = [UIView new];
+        UILabel *view = [UILabel new];
         view.backgroundColor = self.tableView.backgroundColor;
+        view.text = group.headerTitle;
         return view;
     }
     return group.headerView;
@@ -175,14 +194,25 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     LKFormSection *group = self.dataSource[section];
     if (!group.footerView) {
-        UIView *view = [UIView new];
+        UILabel *view = [UILabel new];
         view.backgroundColor = self.tableView.backgroundColor;
+        view.text = group.footerTitle;
         return view;
     }
     return group.footerView;
 }
 
+
+
+//- (void)xxx:(NSNotification *)noti {
+//    NSLog(@"xxx:%@", noti.object);
+//}
+
 #pragma mark - ————— Public —————
+
+- (UITableViewStyle)tableStyle {
+    return UITableViewStylePlain;
+}
 
 - (LKFormItem *)itemAtIndexPath:(NSIndexPath *)indexPath {
     LKFormSection *section = self.dataSource[indexPath.section];
@@ -192,25 +222,22 @@
 
 #pragma mark - ————— Private —————
 
-#pragma mark - ————— Getter —————
-
-- (UITableView *)tableView{
-    if (_tableView == nil) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-        _tableView.tableFooterView = [UIView new];
-        if (@available(iOS 11.0, *)) {
-            _tableView.estimatedRowHeight = 0;
-            _tableView.estimatedSectionHeaderHeight = 0;
-            _tableView.estimatedSectionFooterHeight = 0;
-            _tableView.scrollIndicatorInsets = _tableView.contentInset;
-        }
-    }
-    return _tableView;
+- (void)textChangeWithItem:(LKInputFormItem *)textItem withTextView:(UITextView *)textView orTextField:(UITextField *)textField {
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextViewTextDidChangeNotification object:textView queue:nil usingBlock:^(NSNotification *note) {
+        UITextView *textView = note.object;
+        textItem.text = textView.text;
+        textItem.textBlock(textItem);
+    }];
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:UITextFieldTextDidChangeNotification object:textField queue:nil usingBlock:^(NSNotification *note) {
+        UITextView *textField = note.object;
+        textItem.text = textField.text;
+        textItem.textBlock(textItem);
+    }];
 }
+
+#pragma mark - ————— Getter —————
 
 - (void)setDataSource:(NSArray *)dataSource{
     _dataSource = dataSource;

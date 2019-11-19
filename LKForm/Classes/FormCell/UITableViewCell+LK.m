@@ -17,9 +17,9 @@
 
 - (void)registerCell:(Class)cellClass withIdentifier:(NSString *)identifier {
     
-//    [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(cellClass) owner:self options:nil];
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
-    if (nib) {
+    NSString *path = [[NSBundle mainBundle] pathForResource:NSStringFromClass(cellClass) ofType:@"nib"];
+    if (path) {
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
         [self registerNib:nib forCellReuseIdentifier:identifier];
     }else {
         [self registerClass:cellClass forCellReuseIdentifier:identifier];

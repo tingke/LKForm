@@ -7,15 +7,22 @@
 //
 
 #import "LKFormItem.h"
+@class LKInputFormItem;
 
 typedef NS_ENUM(NSInteger, LKInputType) {
     LKInputTypeInput,
     LKInputTypeTextarea
 };
 
+typedef void(^LKTextChangeBlock)(__kindof LKInputFormItem *item);
+
 @interface LKInputFormItem : LKFormItem
 
+@property(nonatomic, copy) NSString *title;
+
 @property(nonatomic, copy) NSString *text;
+
+@property(nonatomic, strong) UIFont *textFont;
 
 @property(nonatomic, copy) NSString *placeholder;
 
@@ -23,7 +30,10 @@ typedef NS_ENUM(NSInteger, LKInputType) {
 
 @property(nonatomic, assign) BOOL secureTextEntry;
 
+@property(nonatomic, copy) LKTextChangeBlock textBlock;
+
 + (instancetype)itemWithText:(NSString *)text
-                 placeholder:(NSString *)placeholder;
+                 placeholder:(NSString *)placeholder
+                   textBlock:(LKTextChangeBlock)textBlock;
 
 @end

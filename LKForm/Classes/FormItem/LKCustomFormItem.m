@@ -10,8 +10,4 @@
 
 @implementation LKCustomFormItem
 
-- (NSString *)cellIdentifier {
-    return _cellIdentifier?:NSStringFromClass([UITableViewCell class]);
-}
-
 @end
